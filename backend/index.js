@@ -11,11 +11,11 @@ const PORT = 5000;
 
 // ✅ Middleware
 const corsOptions = {
- origin: ['https://street-qr-fronted-git-main-karans-projects-c2579268.vercel.app'],
-
+  origin: ['https://www.qzaar.shop'], // ✅ Allow your frontend domain
   credentials: true,
 };
 app.use(cors(corsOptions));
+
 
 app.use(express.json({ limit: '5mb' }));
 
