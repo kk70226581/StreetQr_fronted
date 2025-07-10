@@ -1,10 +1,12 @@
-// ✅ MenuBuilder.jsx (Shopkeeper Menu + Orders)
-const API_BASE_URL = 'https://streetqr-backend.onrender.com'; // ✅ Deployed backend URL
+
 
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+// ✅ MenuBuilder.jsx (Shopkeeper Menu + Orders)
+const API_BASE_URL = 'https://streetqr-backend.onrender.com'; // ✅ Deployed backend URL
 
 const categories = ["Breakfast", "Lunch", "Brunch", "Dinner"];
 
