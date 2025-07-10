@@ -37,7 +37,7 @@ function MenuView() {
   const t = translations[lang];
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/menu/${id}`)
+    axios.get(`https://streetqr-backend.onrender.com/api/menu/${id}`)
   .then(res => {
     if (res.data.success) {
       setMenuData(res.data.menu);
@@ -88,7 +88,7 @@ function MenuView() {
       total: getTotal()
     };
     try {
-      const res = await axios.post("http://localhost:5000/api/order", orderPayload);
+      const res = await axios.post("https://streetqr-backend.onrender.com/api/order", orderPayload);
       if (res.data.success) {
         navigate("/order-summary", {
           state: { ...orderPayload, orderId: res.data.orderId }

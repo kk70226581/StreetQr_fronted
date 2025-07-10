@@ -32,7 +32,7 @@ const [completedOrders, setCompletedOrders] = useState([]);
 
   const loadMenu = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/menu/${id}`);
+      const res = await axios.get(`https://streetqr-backend.onrender.com/api/menu/${id}`);
       if (res.data.success) {
         const loadedItems = [];
         for (const cat in res.data.menu) {
@@ -49,7 +49,7 @@ const [completedOrders, setCompletedOrders] = useState([]);
 
 const fetchOrders = async (id) => {
   try {
-    const res = await axios.get(`http://localhost:5000/api/orders/${id}`);
+    const res = await axios.get(`https://streetqr-backend.onrender.com/api/orders/${id}`);
     if (res.data.success) {
       const allOrders = res.data.orders;
       setPendingOrders(allOrders.filter(o => o.status !== 'completed'));
@@ -64,7 +64,7 @@ const fetchOrders = async (id) => {
 
 const markCompleted = async (orderId) => {
   try {
-    const res = await axios.put(`http://localhost:5000/api/order-status/${orderId}`, {
+    const res = await axios.put(`https://streetqr-backend.onrender.com/api/order-status/${orderId}`, {
       status: "completed"
     });
     if (res.data.success) {
@@ -85,7 +85,7 @@ const markCompleted = async (orderId) => {
       return;
     }
     try {
-      const res = await axios.post('http://localhost:5000/api/login', { email, password });
+      const res = await axios.post('https://streetqr-backend.onrender.com/api/login', { email, password });
       if (res.data.success) {
         setIsLoggedIn(true);
         setShopId(res.data.userId);
@@ -147,7 +147,7 @@ const handleSubmit = async () => {
   });
 
   try {
-    const res = await axios.post(`http://localhost:5000/api/menu/${shopId}`, {
+    const res = await axios.post(`https://streetqr-backend.onrender.com/api/menu/${shopId}`, {
       menu: groupedData,
       shopName,
       openHours,

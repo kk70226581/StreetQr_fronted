@@ -24,7 +24,7 @@ function LoginSignup({ setUser }) {
 
     try {
       const endpoint = isLogin ? "/api/login" : "/api/signup";
-      const res = await axios.post(`http://localhost:5000${endpoint}`, {
+      const res = await axios.post(`https://streetqr-backend.onrender.com${endpoint}`, {
         email,
         password,
       });
