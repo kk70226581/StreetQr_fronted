@@ -28,6 +28,7 @@ function LoginSignup({ setUser }) {
         email,
         password,
       });
+      //https://streetqr-backend.onrender.com/
 
       if (res.data.success) {
         localStorage.setItem("loggedIn", "true");

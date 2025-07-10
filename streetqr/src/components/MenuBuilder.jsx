@@ -86,6 +86,7 @@ const markCompleted = async (orderId) => {
     }
     try {
       const res = await axios.post('https://streetqr-backend.onrender.com/api/login', { email, password });
+    
       if (res.data.success) {
         setIsLoggedIn(true);
         setShopId(res.data.userId);

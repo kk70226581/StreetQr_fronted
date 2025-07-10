@@ -1,14 +1,17 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
+
 
 const app = express();
 const PORT = 5000;
 
 // ✅ Middleware
 const corsOptions = {
-  origin: ['https://yourfrontend.com', 'http://localhost:3000'], // Replace with actual deployed frontend domain
+  origin: ['https://street-qr-fronted-git-main-karans-projects-c2579268.vercel.app', 'http://localhost:3000'], // Replace with actual deployed frontend domain
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -16,7 +19,8 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '5mb' }));
 
 // ✅ MongoDB Connection
-mongoose.connect('mongodb+srv://karankannaujiya70:Karan7022@cluster0.7kbt4an.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_URI)
+
   .then(() => console.log('✅ MongoDB Connected'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
