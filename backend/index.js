@@ -11,7 +11,8 @@ const PORT = 5000;
 
 // ✅ Middleware
 const corsOptions = {
-  origin: ['https://street-qr-fronted-git-main-karans-projects-c2579268.vercel.app', 'http://localhost:3000'], // Replace with actual deployed frontend domain
+ origin: ['https://street-qr-fronted-git-main-karans-projects-c2579268.vercel.app'],
+
   credentials: true,
 };
 app.use(cors(corsOptions));
