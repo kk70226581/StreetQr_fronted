@@ -105,12 +105,29 @@ function OrderSummary() {
             🧾 Download Invoice
           </button>
 
-          <button
+          {/* <button
             onClick={() => navigate("/")}
             className="bg-gray-200 text-gray-700 px-6 py-2 rounded hover:bg-gray-300"
           >
             🔙 Back to Home
-          </button>
+          </button> */}
+
+
+          <button
+  onClick={() => {
+    const id = localStorage.getItem("qr_id");
+    if (id) navigate(`/menu/${id}`);
+    else alert("Shop ID not found");
+  }}
+  className="mt-6 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition font-semibold"
+>
+  🔙 Back to Menu
+</button>
+
+
+
+
+
         </div>
       </div>
     </div>
