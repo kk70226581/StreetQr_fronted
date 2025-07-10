@@ -37,22 +37,38 @@ const [completedOrders, setCompletedOrders] = useState([]);
     }
   }, [isLoggedIn, shopId]);
 
-  const loadMenu = async (id) => {
-    try {
-      const res = await axios.get(`${BASE}/api/menu/${id}`);
-      if (res.data.success) {
-        const loadedItems = [];
-        for (const cat in res.data.menu) {
-          res.data.menu[cat].forEach(item => {
-            loadedItems.push({ ...item, category: cat });
-          });
-        }
-        setItems(loadedItems);
+
+
+const loadMenu = async (id) => {
+  try {
+    const res = await axios.get(`${BASE}/api/menu/${id}`);
+    if (res.data.success) {
+      const loadedItems = [];
+      for (const cat in res.data.menu) {
+        res.data.menu[cat].forEach(item => {
+          loadedItems.push({ ...item, category: cat });
+        });
       }
-    } catch (err) {
-      alert("Failed to load menu.");
+      setItems(loadedItems);
+
+      // ✅ Load shop details
+      setShopName(res.data.shopName || '');
+      setOpenHours(res.data.openHours || '');
+      setAddress(res.data.address || '');
+
+      // Save to localStorage so QR and reloads have this too
+      localStorage.setItem("shopName", res.data.shopName || '');
+      localStorage.setItem("openHours", res.data.openHours || '');
+      localStorage.setItem("address", res.data.address || '');
     }
-  };
+  } catch (err) {
+    alert("Failed to load menu.");
+  }
+};
+
+
+
+
 
 const fetchOrders = async (id) => {
   try {
