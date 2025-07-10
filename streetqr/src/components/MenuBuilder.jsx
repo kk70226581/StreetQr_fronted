@@ -166,9 +166,11 @@ const handleSubmit = async () => {
     });
 
     if (res.data.success) {
-      alert("Menu updated successfully.");
-      navigate("/qrcode", { state: { id: shopId } }); // use existing shopId
-    } else {
+  alert("Menu updated successfully.");
+  localStorage.setItem("qr_id", shopId); // ✅ Add this line
+  navigate("/qrcode"); // Don't pass via state anymore
+}
+ else {
       alert("Failed to submit menu.");
     }
   } catch (err) {
