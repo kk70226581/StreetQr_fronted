@@ -7,7 +7,8 @@ import axios from 'axios';
 
 // ✅ MenuBuilder.jsx (Shopkeeper Menu + Orders)
 const API_BASE_URL = 'https://streetqr-backend.onrender.com'; // ✅ Deployed backend URL
-const BASE = process.env.REACT_APP_API_BASE;
+const BASE = process.env.REACT_APP_API_BASE || 'https://streetqr-backend.onrender.com';
+
 
 
 const categories = ["Breakfast", "Lunch", "Brunch", "Dinner"];
@@ -55,7 +56,8 @@ const [completedOrders, setCompletedOrders] = useState([]);
 
 const fetchOrders = async (id) => {
   try {
-    const res = await axios.get(`${BASE}api/orders/${id}`);
+   const res = await axios.get(`${BASE}/api/orders/${id}`);
+
     if (res.data.success) {
       const allOrders = res.data.orders;
       setPendingOrders(allOrders.filter(o => o.status !== 'completed'));
@@ -92,6 +94,8 @@ const markCompleted = async (orderId) => {
     }
     try {
       const res = await axios.post(`${BASE}/api/login`, { email, password });
+
+
     
       if (res.data.success) {
         setIsLoggedIn(true);
